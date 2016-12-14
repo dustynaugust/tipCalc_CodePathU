@@ -1,5 +1,6 @@
 import UIKit
 
+
 class ViewController: UIViewController {
     
     var lowTip: Double!
@@ -10,6 +11,7 @@ class ViewController: UIViewController {
     var mainSegSelected: Int!
     var lightOn: Bool!
     var darkOn: Bool!
+    
 
     @IBOutlet weak var tipControl: UISegmentedControl!
     
@@ -24,10 +26,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let locale = Locale.current
+        let currencySymbol = locale.currencySymbol
+        
+        billField.placeholder = currencySymbol!
+        
         billField.becomeFirstResponder()
         
-        tipLabel.text = "$0.00"
-        totalLabel.text = "0.00"
+        tipLabel.text = currencySymbol!+"0.00"
+        totalLabel.text = currencySymbol!+"0.00"
         
         let userDefaults = UserDefaults.standard
         
@@ -47,12 +54,15 @@ class ViewController: UIViewController {
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
+        let locale = Locale.current
+        let currencySymbol = locale.currencySymbol
         
-        tipLabel.text = "$\(tip)"
-        totalLabel.text = "$\(total)"
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = currencySymbol!+"\(tip)"
+        totalLabel.text = currencySymbol!+"\(total)"
+        
+        tipLabel.text = String(format: currencySymbol!+"%.2f", tip)
+        totalLabel.text = String(format: currencySymbol!+"%.2f", total)
 
     }
 
@@ -94,6 +104,13 @@ class ViewController: UIViewController {
             
             billField.textColor = UIColor.darkGray
             
+            let locale = Locale.current
+            let currencySymbol = locale.currencySymbol
+            let str = NSAttributedString(string: currencySymbol!, attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
+            
+            billField.attributedPlaceholder = str
+            
+            
             tipControl.backgroundColor = UIColor.white
             tipControl.tintColor = UIColor.darkGray
             
@@ -107,6 +124,12 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor.darkGray
             
             billField.textColor = UIColor.white
+            
+            let locale = Locale.current
+            let currencySymbol = locale.currencySymbol
+            let str = NSAttributedString(string: currencySymbol!, attributes: [NSForegroundColorAttributeName:UIColor.lightGray])
+            
+            billField.attributedPlaceholder = str
             
             tipControl.backgroundColor = UIColor.darkGray
             tipControl.tintColor = UIColor.white
@@ -135,6 +158,13 @@ class ViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            self.billField.text = nil
+            onEditingChanged(sender: true as AnyObject)
+        }
     }
 }
 
