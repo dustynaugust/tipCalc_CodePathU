@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func onEditingChanged(_ sender: Any) {
         var tipPercentages = [0.18, 0.2, 0.25]
         let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
