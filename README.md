@@ -17,6 +17,9 @@ Time spent: 20 hours in total
 [x] Added swipe gestures to let users to swipe back and forth between the main page and the settings page.
 <br>[x] Changed the theme and colors of the app 
 <br>[x] The user may now select between Light and Dark Themes.
+<br>[x] Shake to reset the calculator.
+<br>[x] Display currency symbol based on users current locale.
+
 
 
 
