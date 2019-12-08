@@ -1,10 +1,6 @@
-# **CodePathU Pre-Work Tip Calculator**
+# Tip Calculator
 
 tipCalc is a tip calculator application for iOS.
-
-Submitted by: Dustyn Buchanan
-
-Time spent: 20 hours in total
 
 ## The following REQUIRED  functionality is complete:
 - [x] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
@@ -19,8 +15,6 @@ Time spent: 20 hours in total
 - [x] The user may now select between Light and Dark Themes.
 - [x] Shake to reset the calculator.
 - [x] Display currency symbol based on users current locale.
-
-
 
 
 ## Here's a walkthrough of implemented user stories:
